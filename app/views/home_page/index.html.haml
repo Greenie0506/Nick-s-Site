@@ -1,0 +1,73 @@
+.notice
+  = notice
+.alert
+  = alert
+
+-# .banner
+  -# %h1 GREENIE
+
+-# .sign
+  -# - if admin_signed_in?
+    -# = link_to "Sign out", destroy_admin_session_path, method: :delete
+  -# - else
+    -# = link_to "Sign in", new_admin_session_path, method: :new
+
+.date_time
+  %h2 DATE
+  = @time
+
+.foursquare
+  %h2
+    FOURSQUARE CHECKIN
+  %ul
+    %li
+      = @checkin.join(",").gsub(',', " ")
+
+.twitter_image
+  %h2 TWITTER
+  %h3 @nickpgreenfield
+  = image_tag @profile_picture
+
+.twitter_text
+  - @tweets.each do |tweet|
+    %ul
+      %li
+        = tweet['text']
+
+.blog
+  %h2 WHAT'S NEW
+  - @post.each do |p|
+    %p
+      Title:
+      = p.title
+    %p
+      Date:
+      = p.date
+    %div
+      Post:
+      = p.content
+
+  -# .new_blog_link
+    -# - if admin_signed_in?
+      -# = link_to "New Post?", new_post_path
+
+.social_media
+  %h2 I'M SOCIAL
+  %div
+    = link_to "Twitter", "http://twitter.com/nickpgreenfield"
+  %div
+    = link_to "Github", "https://github.com/Greenie0506"
+  %div
+    = link_to "Email", "mailto:greenie0506@gmail.com"
+
+-# .contact
+  -# %h2 GET IN TOUCH
+  -# = render 'form'
+
+.flickr_photos
+  %h2
+    FLICKR
+  - @photos.each do |pic|
+    = image_tag(pic)
+
+
